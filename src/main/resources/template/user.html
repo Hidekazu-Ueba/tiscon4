@@ -122,6 +122,7 @@
                                         <input type="date" name="dateOfBirth" placeholder="例：1990/01/01" th:value="${form.dateOfBirth}"/>
                                         <p th:if="${errors.hasError('dateOfBirth')}"
                                            th:text="${errors.getMessage('dateOfBirth')}" class="error-message">
+
                                         </p>
                                         </form>
                                     </div>
@@ -167,7 +168,7 @@
                                 </td>
                                 <td>
                                     <div class="field" th:classappend="${errors.hasError('homePhoneNumber')} ? 'error'">
-                                        <input type="text" name="homePhoneNumber" placeholder="例：00-1111-2222" th:value="${form.homePhoneNumber}"/>
+                                        <input type="text" name="homePhoneNumber" maxlength='12' placeholder="例：00-1111-2222" th:value="${form.homePhoneNumber}"/>
                                         <p th:if="${errors.hasError('homePhoneNumber')}"
                                            th:text="${errors.getMessage('homePhoneNumber')}" class="error-message">
                                         </p>
@@ -183,7 +184,7 @@
                                 <td>
                                     <div class="field"
                                          th:classappend="${errors.hasError('mobilePhoneNumber')} ? 'error'">
-                                        <input type="text" name="mobilePhoneNumber"  maxlength='12' placeholder="例：080-0000-0000"
+                                        <input type="text" name="mobilePhoneNumber"  maxlength='13' placeholder="例：080-0000-0000"
                                                th:value="${form.mobilePhoneNumber}"/>
                                         <p th:if="${errors.hasError('mobilePhoneNumber')}"
                                            th:text="${errors.getMessage('mobilePhoneNumber')}" class="error-message">
@@ -324,6 +325,7 @@
                             <div class="eight wide column right aligned">
                                 <button class="ui teal button angle right icon">次へ（お勤め先情報の入力）</button>
                             </div>
+
                         </div>
                     </form>
                 </div>

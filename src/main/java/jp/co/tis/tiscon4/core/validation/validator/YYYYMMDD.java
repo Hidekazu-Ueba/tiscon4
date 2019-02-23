@@ -52,7 +52,7 @@ public @interface YYYYMMDD {
      *
      * @return 指定されたフォーマット
      */
-    String allowFormat() default "yyyy/MM/dd";
+    String allowFormat() default "yyyy-MM-dd";
 
     /** 複数指定用のアノテーション */
     @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER})
