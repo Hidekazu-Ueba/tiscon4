@@ -109,7 +109,7 @@ public class OrderAction {
                 BeanUtil.copy(form, insOrder);
 
                 UniversalDao.insert(insOrder);
-
+                SessionUtil.delete(ctx, "insOrder");
                 return new HttpResponse("redirect://completed");
             }
             else {
@@ -152,7 +152,7 @@ public class OrderAction {
         BeanUtil.copy(form, insOrder);
 
         UniversalDao.insert(insOrder);
-
+        SessionUtil.delete(ctx, "insOrder");
         return new HttpResponse("redirect://completed");
     }
 
@@ -177,6 +177,7 @@ public class OrderAction {
      * @param ctx HTTPリクエストの処理に関連するサーバ側の情報
      * @return HTTPレスポンス
      */
+
     public HttpResponse completed(HttpRequest req, ExecutionContext ctx) {
         return new HttpResponse("completed.html");
     }
