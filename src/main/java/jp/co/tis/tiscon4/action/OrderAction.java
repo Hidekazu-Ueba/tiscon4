@@ -92,14 +92,31 @@ public class OrderAction {
             throw new ApplicationException(message);
         }
 
-        UniversalDao.findAllBySqlFile(ZipcodeDto.class, "ZIPCODE_LIST");
 
-        BeanUtil.copy(form, insOrder);
+            //UniversalDao.findAllBySqlFile(ZipcodeDto.class, "ZIPCODE_LIST");
 
-        ctx.setRequestScopedVar("form", new JobForm());
-        ctx.setRequestScopedVar("industryTypes", IndustryType.values());
 
-        return new HttpResponse("job.html");
+            BeanUtil.copy(form, insOrder);
+
+
+            ctx.setRequestScopedVar("form", new JobForm());
+            ctx.setRequestScopedVar("industryTypes", IndustryType.values());
+
+            if(form.getJob().equals("主婦")||form.getJob().equals("学生")||form.getJob().equals("年金受給")||form.getJob().equals("パートアルバイト")||form.getJob().equals("他無職")) {
+                //JobForm form = ctx.getRequestScopedVar("form");
+                //InsuranceOrder insOrder = SessionUtil.get(ctx, "insOrder");
+
+                BeanUtil.copy(form, insOrder);
+
+                UniversalDao.insert(insOrder);
+
+                return new HttpResponse("redirect://completed");
+            }
+            else {
+                return new HttpResponse("job.html");
+            }
+
+
     }
 
     /**
